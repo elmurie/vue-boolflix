@@ -34,7 +34,11 @@ export default {
         }
         )
         .then( (response) => {
-            this.movies = response.data.results;
+            if ( this.passedInput == '') {
+                this.movies = [];
+            } else {
+                this.movies = response.data.results;
+            }
         }
         );
     }

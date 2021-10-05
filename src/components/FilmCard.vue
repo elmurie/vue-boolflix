@@ -2,7 +2,7 @@
     <ul>
         <li>Title : {{api.title}}</li>
         <li>Original title : {{api.original_title}}</li>
-        <li>Language : {{api.original_language}}</li>
+        <li>Language : {{api.original_language}}<img :src="'https://www.countryflags.io/' + api.original_language + '/flat/64.png' " alt=""></li>
         <li>Average rating : {{api.vote_average}}</li>
     </ul>
 </template>

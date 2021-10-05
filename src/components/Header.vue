@@ -16,8 +16,8 @@ export default {
     },
     methods : {
         resetSearch() {
-            this.searchText = '';
-            this.$emit('search', this.searchText);
+            this.searchInput = '';
+            this.$emit('search', this.searchInput);
         }
     }
 

@@ -3,7 +3,8 @@
         <li>{{api.title}}</li>
         <li>{{api.original_title}}</li>
         <li>
-            <img :src="flag()">
+            Language:  
+            <img :src="flag(api.original_language)">
         </li>
         <li>{{api.vote_average}}</li>
     </ul>
@@ -14,77 +15,19 @@ export default {
     name : "FilmCard",
     props : {
         api : Object
-            
-        
     },
     methods : {
-        flag() {
-            let language = this.api.original_language;
-            switch (language) {
-                case 'en' :
-                    return 'https://www.countryflags.io/GB/flat/64.png';
-                case 'es': 
-                    return 'https://www.countryflags.io/ES/flat/64.png';
-                case 'fr': 
-                    return 'https://www.countryflags.io/FR/flat/64.png';
-                case 'pt': 
-                    return 'https://www.countryflags.io/PT/flat/64.png';
-                case 'ja': 
-                    return 'https://www.countryflags.io/JP/flat/64.png';
-                case 'de': 
-                    return 'https://www.countryflags.io/DE/flat/64.png';
-                case 'da': 
-                    return 'https://www.countryflags.io/DK/flat/64.png';
-                case 'af': 
-                    return 'https://www.countryflags.io/ZA/flat/64.png';
-                case 'sv': 
-                    return 'https://www.countryflags.io/SE/flat/64.png';
-                case 'fi': 
-                    return 'https://www.countryflags.io/FI/flat/64.png';
-                case 'no': 
-                    return 'https://www.countryflags.io/NO/flat/64.png';
-                case 'ar':
-                    return 'https://www.countryflags.io/SA/flat/64.png';
-                case 'nl':
-                    return 'https://www.countryflags.io/NL/flat/64.png';
-                case 'pl':
-                    return 'https://www.countryflags.io/PL/flat/64.png';
-                case 'ru':
-                    return 'https://www.countryflags.io/ru/flat/64.png';
-                case 'hi': 
-                    return 'https://www.countryflags.io/IN/flat/64.png';
-                case 'it': 
-                    return 'https://www.countryflags.io/IT/flat/64.png';
-                case 'zh': 
-                    return 'https://www.countryflags.io/CN/flat/64.png';
-                case 'cn': 
-                    return 'https://www.countryflags.io/CN/flat/64.png';
-                case 'ko': 
-                    return 'https://www.countryflags.io/KR/flat/64.png';
-                case 'id': 
-                    return 'https://www.countryflags.io/ID/flat/64.png';
-                case 'tr': 
-                    return 'https://www.countryflags.io/TR/flat/64.png';
-                case 'hr': 
-                    return 'https://www.countryflags.io/HR/flat/64.png';
-                case 'ms': 
-                    return 'https://www.countryflags.io/MY/flat/64.png';
-                case 'sr': 
-                    return 'https://www.countryflags.io/RS/flat/64.png';
-                case 'th': 
-                    return 'https://www.countryflags.io/TH/flat/64.png';
-                case 'cs': 
-                    return 'https://www.countryflags.io/CZ/flat/64.png';
-                case 'hu': 
-                    return 'https://www.countryflags.io/HU/flat/64.png';
-                default: 
-                    return "https://upload.wikimedia.org/wikipedia/commons/2/2f/Missing_flag.png"
+        flag(isoCode) {
+            if ( this.languages.includes(isoCode) ) {
+                return `https://www.unknown.nu/flags/images/${isoCode}-100`;
+            } else {
+                return "https://upload.wikimedia.org/wikipedia/commons/2/2f/Missing_flag.png";
             }
         }
     },
     data() {
         return {
-            
+            languages : ['ab','aa','af','ak','sq','am','ar','an','hy','as','av','ae','ay','az','bm','ba','eu','be','bn','bh','bi','bs','br','bg','my','ca','km','ch','ce','ny','zh','cu','cv','kw','co','cr','hr','cs','da','dv','nl','dz','en','eo','et','ee','fo','fj','fi','fr','ff','gd','gl','lg','ka','de','el','kl','gn','ht','ha','he','hz','hi','ho','hu','is','io','ig','id','ia','ie','ga','it','ja','kn','kr','ks','kk','rw','kv','ko','ku','ky','lo','la','lv','lb','li','lt','lu','mk','mg','ms','mt','gv','mi','mh','ro','mn','na','nv','ne','se','no','oc','oj','or','om','os','pa','fa','pl','pt','qu','rm','rn','ru','sm','sg','sc','sr','sn','sd','si','sk','sl','so','st','es','su','ss','sv','ty','tg','ta','tt','th','bo','ti','to','ts','tn','tr','tk','ug','uk','ur','uz','ve','vi','vo','wa','cy','fy','wo','xh','yi','yo','za','zu']
         }
     }
 }
@@ -104,7 +47,8 @@ export default {
         margin: 1em 1em;
 
         img {
-            max-width: 4rem;
+            max-width: 2rem;
+            margin-left: .5em;
         }
     }
     }

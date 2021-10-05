@@ -1,30 +1,38 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header @search="itemSearched"/>
+    <Films :passedInput="updateSearch">
+      <FilmCard/>
+    </Films>
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
 import Films from './components/Films.vue'
+import FilmCard from './components/FilmCard.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
-    Films
+    Films,
+    FilmCard
+  },
+  data() {
+    return {
+      updateSearch : ''
+    }
+  },
+  methods : {
+    itemSearched(item) {
+      this.updateSearch = item;
+    }
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import './assets/style/common';
+
 </style>

@@ -3,7 +3,7 @@
         <li>Title : {{api.title}}</li>
         <li>Original title : {{api.original_title}}</li>
         <li>Language : {{api.original_language}}
-            <img :src="'https://www.countryflags.io/' + flag() + '/flat/64.png'" :alt="api.original_language">
+            <img :src="'https://www.countryflags.io/' + flag() + '/flat/64.png'" :alt="'Language:' + api.original_language">
         </li>
         <li>Average rating : {{api.vote_average}}</li>
     </ul>
@@ -14,7 +14,6 @@ export default {
     name : "FilmCard",
     props : {
         api : Object,
-
     },
     methods : {
         flag() {
@@ -27,7 +26,7 @@ export default {
     },
     data() {
         return {
-            bandiera : 'gb'
+            isLoaded: false
         }
     }
 }

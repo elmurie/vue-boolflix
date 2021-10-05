@@ -50,8 +50,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    li {
-        display: flex;
+    ul  {
+        padding: .625rem;
+
+        li {
+            display: flex;
+        }
     }
 
 </style>

@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li v-for="(TV, index) in movies" :key='index'>
+        <li v-for="(TV, index) in TVSeries" :key='index'>
             <Card :api="TV"/>
         </li>
     </ul>
@@ -36,11 +36,7 @@ export default {
                     }
                 })
                 .then( (response) => {
-                    if ( this.passedInput == '') {
-                        this.TVSeries = [];
-                    } else {
-                        this.TVSeries = response.data.results;
-                    }
+                    this.TVSeries = response.data.results;
                 });
             }
         }

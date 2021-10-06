@@ -36,11 +36,7 @@ export default {
                     }
                 })
                 .then( (response) => {
-                    if ( this.passedInput == '') {
-                        this.movies = [];
-                    } else {
-                        this.movies = response.data.results;
-                    }
+                    this.movies = response.data.results;
                 });
             }
         }

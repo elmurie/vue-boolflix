@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" :style="`background-image: url(${bgImg})`">
+    <header class="wrapper" :style="`background-image: url(${bgImg})`">
         <div class="logo">
             <img :src="BXLogo" alt="">
         </div>
@@ -8,7 +8,7 @@
             <button type="submit" @click.prevent="$emit('search', searchInput)">Search</button>
             <button @click.prevent="resetSearch()">Reset</button>
         </form>
-    </div>
+    </header>
 </template>
 
 <script>

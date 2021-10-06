@@ -1,12 +1,15 @@
 <template>
     <div class="card">
-        <img :src="`https://image.tmdb.org/t/p/w185/${api.poster_path}`" alt="">
+        <img v-if="api.poster_path != null" class="poster" :src="`https://image.tmdb.org/t/p/w342/${api.poster_path}`" alt="">
+        <div v-else class="placeholder">
+            <img class="placeholder-img" :src="placeholderImg">
+            <h3>{{api.title || api.name}}</h3>
+        </div>
         <ul class="data">
-            <li>Title: {{api.title || api.name}}</li>
-            <li>Original Title: {{api.original_title || api.original_name}}</li>
-            <li>Language: <img class="flag" :src="flag(api.original_language)"></li>
-            <li>Rating: {{starQuantity()}}</li>
-            <li class="stars">
+            <li><strong>Title:</strong>{{api.title || api.name}}</li>
+            <li><strong>Original Title: </strong>{{api.original_title || api.original_name}}</li>
+            <li class="lang"><strong>Language:</strong><img class="flag" :src="flag(api.original_language)"></li>
+            <li class="stars"> <strong>Rating:</strong>
                 <div class="fill" v-for="( star , index ) in starQuantity()" :key="index">
                     <i class="fas fa-star"></i>
                 </div>
@@ -14,6 +17,7 @@
                     <i class="far fa-star"></i>
                 </div>
             </li>
+            <li><strong>Overview:</strong><p>{{api.overview}}</p></li>
         </ul>
     </div>
 </template>
@@ -39,32 +43,86 @@ export default {
     data() {
         return {
             missingLanguages : ['gu', 'ii', 'ik', 'iu', 'jv', 'kg', 'ki', 'kj', 'ml', 'mr', 'nb', 'nd', 'ng', 'nn', 'nr', 'pi', 'ps', 'sa', 'sw', 'te', 'tl', 'tw'],
+            placeholderImg : require('../assets/img/placeholder.png')
         }
     }
 }
 </script>
 
-<style lang="scss" scoped>    
+<style lang="scss" scoped>
+@import '../assets/style/common.scss';
     .card {
-        background-color: rgba(204, 204, 204, 0.644);
-        border: 1px solid red;
         margin: 1rem 0;
+        position: relative;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        .placeholder {
+            position: relative;
+            text-align: center;
+
+            & h3 {
+                position: absolute;
+                width: 90%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-transform: uppercase;
+                font-size: 2.5rem;
+                transition: .3s;
+            }
+        }
+
+        &:hover .poster{
+            opacity: .1;
+        }
+
+        &:hover ul {
+            opacity: 1;
+        }
+        &:hover h3 {
+            opacity: 0;
+        }
 
         ul {
-            display: flex;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            flex-direction: column;
+            padding: .6125rem;
             margin-top: 5px;
+            transition: .5s;
 
             li {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin: 1em 1em;
+                margin: .5em 0;
 
+                strong {
+                    margin-right: .2em;
+                }
                 .flag {
                     max-width: 2rem;
                     margin-left: .5em;
                 }
+
+                p {
+                    margin-top: 1em;
+                    text-align: justify;
+                    font-size: .875rem;
+                }
             }
+
+            .lang,
+            .stars {
+                display: flex;
+                align-items: center;
+            }
+
+            .stars i{
+                    color: $gold;
+                    display: flex;
+                }
         }
     }
 

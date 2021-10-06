@@ -1,9 +1,14 @@
 <template>
-    <form>
-        <input type="text" placeholder="Search" v-model="searchInput">
-        <button type="submit" @click.prevent="$emit('search', searchInput)">Search</button>
-        <button @click.prevent="resetSearch()">Reset</button>
-    </form>
+    <div class="wrapper" :style="`background-image: url(${bgImg})`">
+        <div class="logo">
+            <img :src="BXLogo" alt="">
+        </div>
+        <form>
+            <input type="text" placeholder="Search" v-model="searchInput">
+            <button type="submit" @click.prevent="$emit('search', searchInput)">Search</button>
+            <button @click.prevent="resetSearch()">Reset</button>
+        </form>
+    </div>
 </template>
 
 <script>
@@ -11,7 +16,9 @@ export default {
     name : "Header",
     data() {
         return {
-            searchInput : ''
+            searchInput : '',
+            bgImg : require('../assets/img/bgImg_Header.jpg'),
+            BXLogo : require('../assets/img/boolflix_logo.png')
         }
     },
     methods : {
@@ -25,13 +32,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    form {
+    .wrapper {
+        background: hsla(0, 0%, 0%, 0.589);
+        background-blend-mode: multiply;
         display: flex;
-        justify-content: center;
-        padding: 3rem;
+        justify-content: space-between;
+        align-items: center;
+        padding: .625rem;
+        overflow-y: hidden;
 
-        button {
-            margin: 0 .5em;
+        .logo {
+            width: 20%;
+
+            & img {
+                width: 100%;
+                -webkit-filter: drop-shadow(5px 5px 5px #222);
+                filter: drop-shadow(5px 5px 5px #222);
+            }
+        }
+
+
+        form {
+            display: flex;
+            justify-content: center;
+            
+    
+            button {
+                margin: 0 .5em;
+            }
         }
     }
 

@@ -58,7 +58,7 @@ export default {
             
     
             button {
-                margin: 0 .5em;
+                margin-left: 1em;
             }
         }
     }

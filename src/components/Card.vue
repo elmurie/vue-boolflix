@@ -8,7 +8,7 @@
                 Language:  
                 <img :src="flag(api.original_language)">
             </li>
-            <li>{{api.vote_average}}</li>
+            <li>{{starQuantity(api.vote_average)}}</li>
         </ul>
     </div>
 </template>
@@ -26,11 +26,14 @@ export default {
             } else {
                 return "https://upload.wikimedia.org/wikipedia/commons/2/2f/Missing_flag.png";
             }
+        },
+        starQuantity(rating) {
+            return Math.round( rating / 2 );
         }
     },
     data() {
         return {
-            missingLanguages : ['gu', 'ii', 'ik', 'iu', 'jv', 'kg', 'ki', 'kj', 'ml', 'mr', 'nb', 'nd', 'ng', 'nn', 'nr', 'pi', 'ps', 'sa', 'sw', 'te', 'tl', 'tw']
+            missingLanguages : ['gu', 'ii', 'ik', 'iu', 'jv', 'kg', 'ki', 'kj', 'ml', 'mr', 'nb', 'nd', 'ng', 'nn', 'nr', 'pi', 'ps', 'sa', 'sw', 'te', 'tl', 'tw'],
         }
     }
 }
@@ -40,6 +43,7 @@ export default {
     .card {
         background-color: rgba(204, 204, 204, 0.644);
         border: 1px solid red;
+        margin: 1rem 0;
 
         ul {
             display: flex;

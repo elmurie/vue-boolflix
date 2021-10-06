@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <Header @search="itemSearched"/>
-    <Films :passedInput="updateSearch"/>
-    <Series :passedInput="updateSearch"/>
+    <main>
+      <Films :passedInput="updateSearch"/>
+      <Series :passedInput="updateSearch"/>
+    </main>
   </div>
 </template>
 
@@ -33,5 +35,9 @@ export default {
 
 <style lang="scss">
 @import './assets/style/common';
+  main {
+    padding: 30px;
+  }
+
 
 </style>

@@ -2,21 +2,18 @@
     <div class="card">
         <img :src="`https://image.tmdb.org/t/p/w185/${api.poster_path}`" alt="">
         <ul class="data">
-            <li>{{api.title}}{{api.name}}</li>
-            <li>{{api.original_title}}{{api.original_name}}</li>
-            <li>
-                Language:  
-                <img class="flag" :src="flag(api.original_language)">
-            </li>
-            <li>{{starQuantity()}}</li>
-            <div class="stars">
+            <li>Title: {{api.title || api.name}}</li>
+            <li>Original Title: {{api.original_title || api.original_name}}</li>
+            <li>Language: <img class="flag" :src="flag(api.original_language)"></li>
+            <li>Rating: {{starQuantity()}}</li>
+            <li class="stars">
                 <div class="fill" v-for="( star , index ) in starQuantity()" :key="index">
                     <i class="fas fa-star"></i>
                 </div>
                 <div class="empty" v-for="( star , index ) in ( 5 - starQuantity() )" :key="index">
                     <i class="far fa-star"></i>
                 </div>
-            </div>
+            </li>
         </ul>
     </div>
 </template>

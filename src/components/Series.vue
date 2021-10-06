@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="container">
         <h3>TV Series</h3>
         <ul>
             <li v-for="(TV, index) in TVSeries" :key='index'>
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .wrapper  {
+    .container  {
         padding: .625rem;
 
         li {

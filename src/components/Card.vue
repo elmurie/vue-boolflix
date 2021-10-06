@@ -1,7 +1,7 @@
 <template>
     <ul>
-        <li>{{api.title}}</li>
-        <li>{{api.original_title}}</li>
+        <li>{{api.title}}{{api.name}}</li>
+        <li>{{api.original_title}}{{api.original_name}}</li>
         <li>
             Language:  
             <img :src="flag(api.original_language)">

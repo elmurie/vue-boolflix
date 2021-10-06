@@ -86,7 +86,7 @@ export default {
         }
 
         &:hover .poster{
-            opacity: .1;
+            opacity: .4;
         }
 
         &:hover ul {

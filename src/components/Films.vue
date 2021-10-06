@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
         <h3>Movies</h3>
         <ul>
             <li v-for="(movie, index) in movies" :key='index'>

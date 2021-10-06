@@ -1,12 +1,12 @@
 <template>
-    <div class="container">
+    <section>
         <h3>TV Series</h3>
         <ul>
             <li v-for="(TV, index) in TVSeries" :key='index'>
                 <Card :api="TV"/>
             </li>
         </ul>
-    </div>
+    </section>
 </template>
 
 <script>

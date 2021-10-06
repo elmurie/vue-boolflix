@@ -6,9 +6,11 @@
             <li>{{api.original_title}}{{api.original_name}}</li>
             <li>
                 Language:  
-                <img :src="flag(api.original_language)">
+                <img class="flag" :src="flag(api.original_language)">
             </li>
             <li>{{starQuantity(api.vote_average)}}</li>
+
+            <li><font-awesome-icon icon="user-secret"></font-awesome-icon></li>
         </ul>
     </div>
 </template>
@@ -55,7 +57,7 @@ export default {
                 align-items: center;
                 margin: 1em 1em;
 
-                &img {
+                .flag {
                     max-width: 2rem;
                     margin-left: .5em;
                 }

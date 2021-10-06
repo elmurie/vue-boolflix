@@ -25,7 +25,11 @@ body {
     overflow-y: scroll;
     font-family: Helvetica, sans-serif;
     color: $textColor;
-    background-color: $bgColor;
+    background: hsla(0, 0%, 0%, 0.952);
+    background-image: url('~@/assets/img/pattern.png');
+    background-position: center;
+    background-size: 10%;
+    background-blend-mode: multiply;
 }
 
 ul {

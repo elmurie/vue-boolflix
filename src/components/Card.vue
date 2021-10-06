@@ -64,11 +64,10 @@ export default {
             height: 513px;
             position: relative;
             text-align: center;
-            background: hsla(0, 0%, 0%, 0.808);
-            background-position: center;
-            background-size: 30%;
+            background: rgba(31, 0, 8, 0.89);
+            background-size: 35%;
             background-image: url('../assets/img/pattern.png');
-            background-blend-mode: multiply;
+            background-blend-mode: multiply ;
 
             .placeholder-img {
                 visibility: hidden;

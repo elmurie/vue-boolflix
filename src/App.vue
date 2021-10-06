@@ -1,23 +1,19 @@
 <template>
   <div id="app">
     <Header @search="itemSearched"/>
-    <Films :passedInput="updateSearch">
-      <FilmCard/>
-    </Films>
+    <Films :passedInput="updateSearch"/>
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
 import Films from './components/Films.vue'
-import FilmCard from './components/FilmCard.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
     Films,
-    FilmCard
   },
   data() {
     return {

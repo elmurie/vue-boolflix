@@ -1,13 +1,13 @@
 <template>
     <ul>
         <li v-for="(movie, index) in movies" :key='index'>
-            <FilmCard :api="movie"/>
+            <Card :api="movie"/>
         </li>
     </ul>
 </template>
 
 <script>
-import FilmCard from './FilmCard.vue';
+import Card from './Card.vue';
 import axios from 'axios';
 
 export default {
@@ -16,7 +16,7 @@ export default {
         passedInput : String
     },
     components : {
-        FilmCard
+        Card
     },
     data() {
         return {
@@ -27,23 +27,22 @@ export default {
         passedInput() {
             if ( this.passedInput == '') {
                     this.movies = [];
-                } else {
-                    axios.get('https://api.themoviedb.org/3/search/movie', {
-                        params : {
-                            api_key : '72cd08f1aa2d4c12d81158ac764c8449',
-                            query : this.passedInput,
-                            language : 'it-IT'
-                        }
-
-                    })
-                    .then( (response) => {
-                        if ( this.passedInput == '') {
-                            this.movies = [];
-                        } else {
-                            this.movies = response.data.results;
-                        }
-                    });
-                }
+            } else {
+                axios.get('https://api.themoviedb.org/3/search/movie', {
+                    params : {
+                        api_key : '72cd08f1aa2d4c12d81158ac764c8449',
+                        query : this.passedInput,
+                        language : 'it-IT'
+                    }
+                })
+                .then( (response) => {
+                    if ( this.passedInput == '') {
+                        this.movies = [];
+                    } else {
+                        this.movies = response.data.results;
+                    }
+                });
+            }
         }
     }
 }

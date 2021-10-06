@@ -8,9 +8,15 @@
                 Language:  
                 <img class="flag" :src="flag(api.original_language)">
             </li>
-            <li>{{starQuantity(api.vote_average)}}</li>
-
-            <li><font-awesome-icon icon="user-secret"></font-awesome-icon></li>
+            <li>{{starQuantity()}}</li>
+            <div class="stars">
+                <div class="fill" v-for="( star , index ) in starQuantity()" :key="index">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="empty" v-for="( star , index ) in ( 5 - starQuantity() )" :key="index">
+                    <i class="far fa-star"></i>
+                </div>
+            </div>
         </ul>
     </div>
 </template>
@@ -29,8 +35,8 @@ export default {
                 return "https://upload.wikimedia.org/wikipedia/commons/2/2f/Missing_flag.png";
             }
         },
-        starQuantity(rating) {
-            return Math.round( rating / 2 );
+        starQuantity() {
+            return Math.ceil( this.api.vote_average / 2 );
         }
     },
     data() {

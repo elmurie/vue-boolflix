@@ -1,13 +1,16 @@
 <template>
-    <ul>
-        <li>{{api.title}}{{api.name}}</li>
-        <li>{{api.original_title}}{{api.original_name}}</li>
-        <li>
-            Language:  
-            <img :src="flag(api.original_language)">
-        </li>
-        <li>{{api.vote_average}}</li>
-    </ul>
+    <div class="card">
+        <img :src="`https://image.tmdb.org/t/p/w185/${api.poster_path}`" alt="">
+        <ul class="data">
+            <li>{{api.title}}{{api.name}}</li>
+            <li>{{api.original_title}}{{api.original_name}}</li>
+            <li>
+                Language:  
+                <img :src="flag(api.original_language)">
+            </li>
+            <li>{{api.vote_average}}</li>
+        </ul>
+    </div>
 </template>
 
 <script>
@@ -34,23 +37,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>    
-    ul {
-        display: flex;
-        background-color: rgb(206, 206, 206);
+    .card {
+        background-color: rgba(204, 204, 204, 0.644);
         border: 1px solid red;
-        margin-top: 5px;
 
-        li {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 1em 1em;
+        ul {
+            display: flex;
+            margin-top: 5px;
 
-        img {
-            max-width: 2rem;
-            margin-left: .5em;
+            li {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 1em 1em;
+
+                &img {
+                    max-width: 2rem;
+                    margin-left: .5em;
+                }
+            }
         }
-    }
     }
 
 

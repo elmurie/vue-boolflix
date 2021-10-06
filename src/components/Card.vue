@@ -2,13 +2,13 @@
     <div class="card">
         <img v-if="api.poster_path != null" class="poster" :src="`https://image.tmdb.org/t/p/w342/${api.poster_path}`" alt="">
         <div v-else class="placeholder">
-            <img class="placeholder-img" :src="placeholderImg">
+            <!-- <img class="placeholder-img" :src="placeholderImg"> -->
             <h3>{{api.title || api.name}}</h3>
         </div>
         <ul class="data">
             <li><strong>Title:</strong>{{api.title || api.name}}</li>
             <li><strong>Original Title: </strong>{{api.original_title || api.original_name}}</li>
-            <li class="lang"><strong>Language:</strong><img class="flag" :src="flag(api.original_language)"></li>
+            <li class="lang"><strong>Original Language:</strong><img class="flag" :src="flag(api.original_language)"></li>
             <li class="stars"> <strong>Rating:</strong>
                 <div class="fill" v-for="( star , index ) in starQuantity()" :key="index">
                     <i class="fas fa-star"></i>
@@ -60,8 +60,19 @@ export default {
         }
 
         .placeholder {
+            width: 342px;
+            height: 513px;
             position: relative;
             text-align: center;
+            background: hsla(0, 0%, 0%, 0.808);
+            background-position: center;
+            background-size: 30%;
+            background-image: url('../assets/img/pattern.png');
+            background-blend-mode: multiply;
+
+            .placeholder-img {
+                visibility: hidden;
+            }
 
             & h3 {
                 position: absolute;

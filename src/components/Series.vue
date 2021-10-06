@@ -1,9 +1,12 @@
 <template>
-    <ul>
-        <li v-for="(TV, index) in TVSeries" :key='index'>
-            <Card :api="TV"/>
-        </li>
-    </ul>
+    <div class="wrapper">
+        <h3>TV Series</h3>
+        <ul>
+            <li v-for="(TV, index) in TVSeries" :key='index'>
+                <Card :api="TV"/>
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
@@ -45,7 +48,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    ul  {
+    .wrapper  {
         padding: .625rem;
 
         li {

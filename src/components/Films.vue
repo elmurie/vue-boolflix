@@ -1,9 +1,12 @@
 <template>
+    <div class="wrapper">
+        <h3>Movies</h3>
     <ul>
         <li v-for="(movie, index) in movies" :key='index'>
             <Card :api="movie"/>
         </li>
     </ul>
+    </div>
 </template>
 
 <script>
@@ -45,7 +48,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    ul  {
+    .wrapper  {
         padding: .625rem;
 
         li {

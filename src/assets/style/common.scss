@@ -1,6 +1,3 @@
-// Import FontAwesome
-@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css';
-
 // Import variables file
 @import './variables.scss';
 
@@ -30,6 +27,7 @@ body {
     background-position: center;
     background-size: 10%;
     background-blend-mode: multiply;
+    position: relative;
 }
 
 ul {

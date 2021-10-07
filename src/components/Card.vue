@@ -1,6 +1,8 @@
 <template>
     <div class="card">
-        <img v-if="api.poster_path != null" class="poster" :src="`https://image.tmdb.org/t/p/w342/${api.poster_path}`" alt="">
+        <!-- Card poster is shown, if value is not null -->
+        <img v-if="api.poster_path != null" class="poster" :src="`https://image.tmdb.org/t/p/w342/${api.poster_path}`">
+        <!-- If value is null, placeholder image is shown  -->
         <div v-else class="placeholder">
             <!-- <img class="placeholder-img" :src="placeholderImg"> -->
             <h3>{{api.title || api.name}}</h3>
@@ -8,11 +10,14 @@
         <ul class="data">
             <li><strong>Title:</strong>{{api.title || api.name}}</li>
             <li><strong>Original Title: </strong>{{api.original_title || api.original_name}}</li>
+            <!-- Flag method checks if the language is supported and returns either the correspondant flag or a default one  -->
             <li class="lang"><strong>Original Language:</strong><img class="flag" :src="flag(api.original_language)"></li>
             <li class="stars"> <strong>Rating:</strong>
+                <!-- Returns filled in stars -->
                 <div class="fill" v-for="( star , index ) in starQuantity()" :key="index">
-                    <i class="fas fa-star"></i>
+                    <font-awesome-icon :icon="starFill"/>
                 </div>
+                <!-- Returns empty stars -->
                 <div class="empty" v-for="( star , index ) in ( 5 - starQuantity() )" :key="index">
                     <i class="far fa-star"></i>
                 </div>
@@ -23,10 +28,17 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons'
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons'
+
 export default {
     name : "Card",
     props : {
         api : Object
+    },
+    components : {
+        FontAwesomeIcon
     },
     methods : {
         flag(isoCode) {
@@ -43,7 +55,9 @@ export default {
     data() {
         return {
             missingLanguages : ['gu', 'ii', 'ik', 'iu', 'jv', 'kg', 'ki', 'kj', 'ml', 'mr', 'nb', 'nd', 'ng', 'nn', 'nr', 'pi', 'ps', 'sa', 'sw', 'te', 'tl', 'tw'],
-            placeholderImg : require('../assets/img/placeholder.png')
+            placeholderImg : require('../assets/img/placeholder.png'),
+            starFill: fasStar,
+            starEmpty: farStar
         }
     }
 }
@@ -52,6 +66,7 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/style/common.scss';
     .card {
+        background-color: $bgColor;
         margin: 1rem 0;
         position: relative;
 
@@ -85,9 +100,9 @@ export default {
             }
         }
 
-        & .poster {
+        // & .poster {
             // width: 100%;
-        }
+        // }
 
         &:hover .poster{
             opacity: .4;

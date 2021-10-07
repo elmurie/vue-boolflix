@@ -40,9 +40,12 @@ export default {
         align-items: center;
         padding: .625rem;
         overflow-y: hidden;
+        position: fixed;
+        z-index: 2;
+        width: 100%;
 
         .logo {
-            width: 20%;
+            width: 10%;
 
             & img {
                 width: 100%;

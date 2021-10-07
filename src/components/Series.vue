@@ -1,6 +1,6 @@
 <template>
-    <section>
-        <h3>TV Series</h3>
+    <section class="tv-series">
+        <h3>TV SERIES</h3>
         <ul>
             <li v-for="(TV, index) in TVSeries" :key='index'>
                 <Card :api="TV"/>
@@ -48,9 +48,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .container  {
-        padding: .625rem;
-
+    .tv-series  {
+        padding-top: 5rem;
+        
+        & > ul { 
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
         li {
             display: flex;
         }

@@ -1,12 +1,12 @@
 <template>
-    <div>
-        <h3>Movies</h3>
+    <section class="movies">
+        <h3>MOVIES</h3>
         <ul>
             <li v-for="(movie, index) in movies" :key='index'>
                 <Card :api="movie"/>
             </li>
         </ul>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -48,9 +48,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .container  {
-        padding: .625rem;
-
+    .movies  {
+        padding-top: 5rem;
+        
+        & > ul { 
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
         li {
             display: flex;
         }

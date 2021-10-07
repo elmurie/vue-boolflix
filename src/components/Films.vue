@@ -2,7 +2,7 @@
     <section class="movies">
         <h3>MOVIES</h3>
         <ul>
-            <li v-for="(movie, index) in movies" :key='index'>
+            <li v-for="(movie, movieIndex) in movies" :key='movieIndex'>
                 <Card :api="movie"/>
             </li>
         </ul>
@@ -49,6 +49,7 @@ export default {
 
 <style lang="scss" scoped>
     .movies  {
+        margin: 0 auto;
         padding-top: 5rem;
         
         & > ul { 
@@ -57,6 +58,7 @@ export default {
         }
         
         li {
+            width: 20%;
             display: flex;
         }
     }

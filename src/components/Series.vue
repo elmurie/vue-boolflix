@@ -2,7 +2,7 @@
     <section class="tv-series">
         <h3>TV SERIES</h3>
         <ul>
-            <li v-for="(TV, index) in TVSeries" :key='index'>
+            <li v-for="(TV, TVindex) in TVSeries" :key='TVindex'>
                 <Card :api="TV"/>
             </li>
         </ul>

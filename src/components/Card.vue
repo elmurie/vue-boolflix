@@ -2,35 +2,39 @@
     <div class="card">
         <!-- Card poster is shown, if value is not null -->
         <img v-if="api.poster_path != null" class="poster" :src="`https://image.tmdb.org/t/p/w342/${api.poster_path}`">
+
         <!-- If value is null, placeholder image is shown  -->
         <div v-else class="placeholder">
-            <!-- <img class="placeholder-img" :src="placeholderImg"> -->
             <h3>{{api.title || api.name}}</h3>
         </div>
+
         <ul class="data">
             <li><strong>Title:</strong>{{api.title || api.name}}</li>
+
             <li><strong>Original Title: </strong>{{api.original_title || api.original_name}}</li>
+
             <!-- Flag method checks if the language is supported and returns either the correspondant flag or a default one  -->
             <li class="lang"><strong>Original Language:</strong><img class="flag" :src="flag(api.original_language)"></li>
+
             <li class="stars"> <strong>Rating:</strong>
                 <!-- Returns filled in stars -->
-                <div class="fill" v-for="( star , index ) in starQuantity()" :key="index">
-                    <font-awesome-icon :icon="starFill"/>
+                <div class="fill" v-for="( star , fillIndex ) in starQuantity()" :key="fillIndex">
+                    <font-awesome-icon icon="star" />
                 </div>
                 <!-- Returns empty stars -->
-                <div class="empty" v-for="( star , index ) in ( 5 - starQuantity() )" :key="index">
-                    <i class="far fa-star"></i>
+                <div class="empty" v-for="( star , emptyIndex ) in ( 5 - starQuantity() )" :key="`ciccio` +  emptyIndex">
+                    <font-awesome-icon :icon="['far', 'star']" />
                 </div>
             </li>
+
             <li><strong>Overview:</strong><p>{{api.overview}}</p></li>
+
         </ul>
     </div>
 </template>
 
 <script>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons'
-import { faStar as farStar } from '@fortawesome/free-regular-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default {
     name : "Card",
@@ -38,7 +42,7 @@ export default {
         api : Object
     },
     components : {
-        FontAwesomeIcon
+        // FontAwesomeIcon
     },
     methods : {
         flag(isoCode) {
@@ -55,9 +59,7 @@ export default {
     data() {
         return {
             missingLanguages : ['gu', 'ii', 'ik', 'iu', 'jv', 'kg', 'ki', 'kj', 'ml', 'mr', 'nb', 'nd', 'ng', 'nn', 'nr', 'pi', 'ps', 'sa', 'sw', 'te', 'tl', 'tw'],
-            placeholderImg : require('../assets/img/placeholder.png'),
-            starFill: fasStar,
-            starEmpty: farStar
+            placeholderImg : require('../assets/img/placeholder.png')
         }
     }
 }
@@ -67,19 +69,19 @@ export default {
 @import '../assets/style/common.scss';
     .card {
         background-color: $bgColor;
-        margin: 1rem 0;
+        margin: 1rem .1em;
         position: relative;
+        display: flex;
 
         &:hover {
             cursor: pointer;
         }
 
         .placeholder {
-            width: 342px;
-            height: 513px;
+            width: 100%;
             position: relative;
             text-align: center;
-            background: rgba(31, 0, 8, 0.89);
+            background-color: $bgColor;
             background-size: 35%;
             background-image: url('../assets/img/pattern.png');
             background-blend-mode: multiply ;
@@ -100,12 +102,13 @@ export default {
             }
         }
 
-        // & .poster {
-            // width: 100%;
-        // }
+        .poster {
+            width: 100%;
+            object-fit: cover;
+        }
 
         &:hover .poster{
-            opacity: .4;
+            opacity: .2;
         }
 
         &:hover ul {
@@ -148,10 +151,11 @@ export default {
                 align-items: center;
             }
 
-            .stars i{
-                    color: $gold;
-                    display: flex;
-                }
+            .empty,
+            .fill {
+                color: $gold;
+                display: flex;
+            }
         }
     }
 

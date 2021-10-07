@@ -22,7 +22,8 @@ export default {
   },
   data() {
     return {
-      updateSearch : ''
+      updateSearch : '',
+      bodyBgImage: require('./assets/img/pattern.png')
     }
   },
   methods : {
@@ -35,8 +36,19 @@ export default {
 
 <style lang="scss">
 @import './assets/style/common';
-  main {
+  body {
+    background: hsla(0, 0%, 0%, 0.952);
+    background-image: url('./assets/img/pattern.png');
+    background-position: center;
+    background-size: 10%;
+    background-blend-mode: multiply;
+
+    main {
     padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   }
 
 

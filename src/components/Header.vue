@@ -5,7 +5,7 @@
         </div>
         <form>
             <input type="text" placeholder="Search" v-model="searchInput">
-            <button type="submit" @click.prevent="$emit('search', searchInput)">Search</button>
+            <button type="submit" @click.prevent="$emit('search', searchInput), searchInput = '' ">Search</button>
             <button @click.prevent="resetSearch()">Reset</button>
         </form>
     </header>

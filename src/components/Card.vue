@@ -85,6 +85,10 @@ export default {
             }
         }
 
+        & .poster {
+            // width: 100%;
+        }
+
         &:hover .poster{
             opacity: .4;
         }

@@ -73,3 +73,24 @@ button:active {
 input:focus {
     outline: none;
 }
+
+// Scrollbar
+
+/* Width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: $bgColor;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $mainColor;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: $mainColorDark;
+}

@@ -34,6 +34,7 @@ export default {
                     this.movies = [];
                     this.noMovieFound = false;
             } else {
+                this.noMovieFound = false;
                 axios.get('https://api.themoviedb.org/3/search/movie', {
                     params : {
                         api_key : '72cd08f1aa2d4c12d81158ac764c8449',

@@ -34,6 +34,7 @@ export default {
                     this.TVSeries = [];
                     this.noTVFound = false;
             } else {
+                this.noTVFound = false;
                 axios.get('https://api.themoviedb.org/3/search/tv', {
                     params : {
                         api_key : '72cd08f1aa2d4c12d81158ac764c8449',

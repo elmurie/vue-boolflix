@@ -2,7 +2,7 @@
   <div id="app">
     <Header @search="itemSearched"/>
     <main>
-      <h1 v-if="updateSearch == ''">SEARCH A MOVIE OR TV SERIES</h1>
+      <h1 class="searchCoA" v-if="updateSearch == ''">SEARCH A MOVIE OR TV SERIES</h1>
       <Films :passedInput="updateSearch"/>
       <Series :passedInput="updateSearch"/>
     </main>
@@ -50,9 +50,15 @@ export default {
       flex-direction: column;
       align-items: flex-start;
 
-      h1 {
+      .searchCoA {
         align-self: center;
         margin-top: 10%;
+        animation: blinker 3s ease-in-out infinite;
+      }
+      @keyframes blinker {
+        50% {
+          opacity : .25;
+        }
       }
     }
   }

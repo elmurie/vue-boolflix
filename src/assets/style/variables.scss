@@ -17,4 +17,5 @@ $gold : hsl(49, 100%, 50%);
 
 // Font sizes
 
-$cardFont : 24px;
+$cardFont : clamp(.5rem, 1vw, 2rem);
+$placeholderFont : clamp(1rem, 2vw, 3rem);

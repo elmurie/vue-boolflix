@@ -5,6 +5,7 @@
 
         <!-- If value is null, placeholder image is shown  -->
         <div v-else class="placeholder">
+            <img class="placeholder-img" :src="placeholderImg" alt="">
             <h3>{{api.title || api.name}}</h3>
         </div>
 
@@ -22,7 +23,7 @@
                     <font-awesome-icon icon="star" />
                 </div>
                 <!-- Returns empty stars -->
-                <div class="empty" v-for="( star , emptyIndex ) in ( 5 - starQuantity() )" :key="`ciccio` +  emptyIndex">
+                <div class="empty" v-for="( star , emptyIndex ) in ( 5 - starQuantity() )" :key="`avoidDuplicateIndex` +  emptyIndex">
                     <font-awesome-icon :icon="['far', 'star']" />
                 </div>
             </li>
@@ -87,7 +88,9 @@ export default {
             background-blend-mode: multiply ;
 
             .placeholder-img {
-                visibility: hidden;
+                width: 100%;
+                object-fit: cover;
+
             }
 
             & h3 {
@@ -97,7 +100,7 @@ export default {
                 left: 50%;
                 transform: translate(-50%, -50%);
                 text-transform: uppercase;
-                font-size: 2.5rem;
+                font-size: $placeholderFont;
                 transition: .3s;
             }
         }
@@ -120,12 +123,14 @@ export default {
 
         ul {
             opacity: 0;
+            height: 100%;
             position: absolute;
             top: 0;
             flex-direction: column;
             padding: .6125rem;
             margin-top: 5px;
             transition: .5s;
+            font-size: $cardFont;
 
             li {
                 margin: .5em 0;
@@ -141,7 +146,11 @@ export default {
                 p {
                     margin-top: 1em;
                     text-align: justify;
-                    font-size: .875rem;
+                    display: -webkit-box;
+                    -webkit-line-clamp: var(--line-clamp, 8);
+                    -webkit-box-orient: vertical;
+                    word-break: var(--word-break, 'none');
+                    overflow: hidden;
                 }
             }
 

@@ -49,6 +49,7 @@ export default {
 
 <style lang="scss" scoped>
     .tv-series  {
+        margin: 0 auto;
         padding-top: 5rem;
         
         & > ul { 
@@ -57,6 +58,7 @@ export default {
         }
         
         li {
+            width: 20%;
             display: flex;
         }
     }

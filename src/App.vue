@@ -2,7 +2,7 @@
   <div id="app">
     <Header @search="itemSearched"/>
     <main>
-      <h1 class="searchCoA" v-if="updateSearch == ''">SEARCH A MOVIE OR TV SERIES</h1>
+      <h1 class="searchCoA" v-if="updateSearch == ''">SEARCH FOR A MOVIE OR TV SERIES</h1>
       <Films :passedInput="updateSearch"/>
       <Series :passedInput="updateSearch"/>
     </main>
@@ -31,6 +31,9 @@ export default {
     itemSearched(item) {
       this.updateSearch = item;
     }
+  },
+  created(){
+    document.title = "Boolflix"
   }
 }
 </script>
@@ -45,7 +48,7 @@ export default {
     background-blend-mode: multiply;
 
     main {
-      padding: 30px;
+      padding: 3.125rem 6.25rem 6.25rem 6.25rem;
       display: flex;
       flex-direction: column;
       align-items: flex-start;

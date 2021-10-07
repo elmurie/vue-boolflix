@@ -1,5 +1,6 @@
 <template>
     <section class="tv-series">
+        <h1 v-if="noTVFound == true">NO TV SERIES FOUND</h1>
         <h3 v-if="TVSeries != 0">TV SERIES</h3>
         <ul>
             <li v-for="(TV, TVindex) in TVSeries" :key='TVindex'>
@@ -23,13 +24,15 @@ export default {
     },
     data() {
         return {
-            TVSeries: []
+            TVSeries: [],
+            noTVFound : false
         }
     },
     watch : {
         passedInput() {
             if ( this.passedInput == '') {
                     this.TVSeries = [];
+                    this.noTVFound = false;
             } else {
                 axios.get('https://api.themoviedb.org/3/search/tv', {
                     params : {
@@ -40,6 +43,9 @@ export default {
                 })
                 .then( (response) => {
                     this.TVSeries = response.data.results;
+                    if ( this.TVSeries.length <= 0) {
+                        this.noTVFound = true;
+                    }
                 });
             }
         }
@@ -51,6 +57,10 @@ export default {
     .tv-series  {
         width: 100%;
         padding-top: 1rem;
+
+        h1 {
+            text-align: center;
+        }
         
         & > ul {
             display: flex;

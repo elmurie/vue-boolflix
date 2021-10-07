@@ -1,5 +1,6 @@
 <template>
     <section class="movies">
+        <h1 v-if="noMovieFound == true">NO MOVIES FOUND</h1>
         <h3 v-if="movies != 0">MOVIES</h3>
         <ul>
             <li v-for="(movie, movieIndex) in movies" :key='movieIndex'>
@@ -23,13 +24,15 @@ export default {
     },
     data() {
         return {
-            movies: []
+            movies: [],
+            noMovieFound : false
         }
     },
     watch : {
         passedInput() {
             if ( this.passedInput == '') {
                     this.movies = [];
+                    this.noMovieFound = false;
             } else {
                 axios.get('https://api.themoviedb.org/3/search/movie', {
                     params : {
@@ -40,6 +43,9 @@ export default {
                 })
                 .then( (response) => {
                     this.movies = response.data.results;
+                    if ( this.movies.length <= 0) {
+                        this.noMovieFound = true;
+                    }
                 });
             }
         }
@@ -52,6 +58,10 @@ export default {
         width: 100%;
         padding-top: 5rem;
         
+        h1 {
+            text-align: center;
+        }
+
         & > ul { 
             display: flex;
             justify-content: flex-start;

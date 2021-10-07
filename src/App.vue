@@ -2,6 +2,7 @@
   <div id="app">
     <Header @search="itemSearched"/>
     <main>
+      <h1 v-if="updateSearch == ''">SEARCH A MOVIE OR TV SERIES</h1>
       <Films :passedInput="updateSearch"/>
       <Series :passedInput="updateSearch"/>
     </main>
@@ -44,11 +45,16 @@ export default {
     background-blend-mode: multiply;
 
     main {
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      h1 {
+        align-self: center;
+        margin-top: 10%;
+      }
+    }
   }
 
 

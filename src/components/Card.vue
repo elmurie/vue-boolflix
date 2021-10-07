@@ -13,7 +13,8 @@
         <ul class="data">
             <li><strong>Title:</strong>{{api.title || api.name}}</li>
 
-            <li><strong>Original Title: </strong>{{api.original_title || api.original_name}}</li>
+            <!-- If title is the same as originaltitle, original title is not shown -->
+            <li v-if="api.original_title !== api.title || api.original_name !== api.name"><strong>Original Title: </strong>{{api.original_title || api.original_name}}</li>
 
             <!-- Flag method checks if the language is supported and returns either the correspondant flag or a default one  -->
             <li class="lang"><strong>Original Language:</strong><img class="flag" :src="flag(api.original_language)"></li>
@@ -74,6 +75,7 @@ export default {
         margin: 1rem .1em;
         position: relative;
         display: flex;
+        transition: 1s;
 
         &:hover {
             cursor: pointer;
@@ -130,7 +132,7 @@ export default {
             flex-direction: column;
             padding: .6125rem;
             margin-top: 5px;
-            transition: .5s;
+            transition: 1s;
             font-size: $cardFont;
 
             li {
@@ -146,7 +148,6 @@ export default {
 
                 p {
                     margin-top: 1em;
-                    text-align: justify;
                     display: -webkit-box;
                     -webkit-line-clamp: var(--line-clamp, 8);
                     -webkit-box-orient: vertical;

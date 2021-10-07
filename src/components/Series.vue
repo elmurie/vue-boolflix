@@ -49,10 +49,12 @@ export default {
 
 <style lang="scss" scoped>
     .tv-series  {
+        width: 100%;
         padding-top: 1rem;
         
-        & > ul { 
+        & > ul {
             display: flex;
+            justify-content: flex-start;
             flex-wrap: wrap;
         }
         

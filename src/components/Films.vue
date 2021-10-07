@@ -49,10 +49,12 @@ export default {
 
 <style lang="scss" scoped>
     .movies  {
+        width: 100%;
         padding-top: 5rem;
         
         & > ul { 
             display: flex;
+            justify-content: flex-start;
             flex-wrap: wrap;
         }
         

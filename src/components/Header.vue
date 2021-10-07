@@ -45,7 +45,8 @@ export default {
         width: 100%;
 
         .logo {
-            width: 10%;
+            max-width: 10%;
+            min-width: 5%;
 
             & img {
                 width: 100%;

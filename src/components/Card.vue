@@ -9,6 +9,7 @@
             <h3>{{api.title || api.name}}</h3>
         </div>
 
+        <!-- Text on hover -->
         <ul class="data">
             <li><strong>Title:</strong>{{api.title || api.name}}</li>
 

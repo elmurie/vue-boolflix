@@ -1,6 +1,6 @@
 <template>
     <section class="tv-series">
-        <h3>TV SERIES</h3>
+        <h3 v-if="TVSeries != 0">TV SERIES</h3>
         <ul>
             <li v-for="(TV, TVindex) in TVSeries" :key='TVindex'>
                 <Card :api="TV"/>
@@ -49,8 +49,7 @@ export default {
 
 <style lang="scss" scoped>
     .tv-series  {
-        margin: 0 auto;
-        padding-top: 5rem;
+        padding-top: 1rem;
         
         & > ul { 
             display: flex;

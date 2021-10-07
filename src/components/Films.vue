@@ -1,6 +1,6 @@
 <template>
     <section class="movies">
-        <h3>MOVIES</h3>
+        <h3 v-if="movies != 0">MOVIES</h3>
         <ul>
             <li v-for="(movie, movieIndex) in movies" :key='movieIndex'>
                 <Card :api="movie"/>
@@ -49,7 +49,6 @@ export default {
 
 <style lang="scss" scoped>
     .movies  {
-        margin: 0 auto;
         padding-top: 5rem;
         
         & > ul { 

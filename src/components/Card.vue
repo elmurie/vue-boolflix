@@ -76,6 +76,7 @@ export default {
         position: relative;
         display: flex;
         transition: 1s;
+        
 
         &:hover {
             cursor: pointer;
@@ -111,10 +112,13 @@ export default {
         .poster {
             width: 100%;
             object-fit: cover;
+            transform: rotateY(0deg);
+            transition:  1s ease-out;
         }
 
         &:hover .poster{
             opacity: .2;
+            transform: rotateY(180deg);
         }
 
         &:hover ul {

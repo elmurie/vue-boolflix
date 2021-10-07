@@ -30,11 +30,10 @@ export default {
     },
     watch : {
         passedInput() {
+            this.noTVFound = false;
             if ( this.passedInput == '') {
                     this.TVSeries = [];
-                    this.noTVFound = false;
             } else {
-                this.noTVFound = false;
                 axios.get('https://api.themoviedb.org/3/search/tv', {
                     params : {
                         api_key : '72cd08f1aa2d4c12d81158ac764c8449',
@@ -55,12 +54,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/style/common.scss';
     .tv-series  {
         width: 100%;
         padding-top: 1rem;
 
         h1 {
             text-align: center;
+        }
+
+        h3 {
+            font-size: $titleSectionFont;
         }
         
         & > ul {

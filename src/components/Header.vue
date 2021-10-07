@@ -43,6 +43,7 @@ export default {
         position: fixed;
         z-index: 2;
         width: 100%;
+        box-shadow: inset 0px -15px 20px -7px #000000;
 
         .logo {
             max-width: 10%;

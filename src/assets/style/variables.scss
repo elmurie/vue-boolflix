@@ -1,4 +1,4 @@
-// Colors
+/* Colors */
 
 // Accent color
 $mainColor : hsl(356,79%,48%);
@@ -15,7 +15,8 @@ $bgColor : hsl(0, 0%, 0%);
 // Star rating color
 $gold : hsl(49, 100%, 50%);
 
-// Font sizes
+/*Font sizes*/
+
 $titleSectionFont : clamp(1rem, 3vw, 3rem);
 $cardFont : clamp(.5rem, 1vw, 2rem);
 $placeholderFont : clamp(1rem, 2vw, 3rem);

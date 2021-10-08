@@ -59,23 +59,25 @@ input:focus {
     outline: none;
 }
 
-// Scrollbar
+/* Scrollbar */
 
-/* Width */
+// Width
 ::-webkit-scrollbar {
     width: 10px;
 }
-/* Track */
+// Track
 ::-webkit-scrollbar-track {
     background: $bgColor;
 }
 
-/* Handle */
+// Handle
 ::-webkit-scrollbar-thumb {
-    background: $mainColor;
+    background: linear-gradient($mainColor, $mainColorDark);
 }
 
-/* Handle on hover */
+// Handle on hover
 ::-webkit-scrollbar-thumb:hover {
-    background: $mainColorDark;
+    background: linear-gradient($mainColorDark, $mainColor) ;
 }
+
+/* Media queries */

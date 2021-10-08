@@ -1,8 +1,13 @@
 <template>
   <div id="app">
+
+    <!-- listens to v-model input from header.vue   -->
     <Header @search="itemSearched"/>
     <main>
+      <!-- text displayed on initial page load or if search is resetted, hidden when proper input is entered  -->
       <h1 class="searchCoA" v-if="updateSearch == ''">SEARCH FOR A MOVIE OR TV SERIES</h1>
+      
+      <!--prop (v-model input value) passed onto Movies and Series-->
       <Films :passedInput="updateSearch"/>
       <Series :passedInput="updateSearch"/>
     </main>
@@ -28,11 +33,13 @@ export default {
     }
   },
   methods : {
+    // v-model input transformed into prop to be passed onto movies and Series
     itemSearched(item) {
       this.updateSearch = item;
     }
   },
   created(){
+    // Changes page title
     document.title = "Boolflix"
   }
 }
@@ -48,7 +55,7 @@ export default {
     background-blend-mode: multiply;
 
     main {
-      padding: 3.125rem 6.25rem 6.25rem 6.25rem;
+      padding: 1% 5% 5% 5%;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -61,6 +68,8 @@ export default {
       @keyframes blinker {
         50% {
           opacity : .25;
+          -webkit-text-shadow: 0px 0px 15px 10px #FFFFFF; 
+          text-shadow: 0px 0px 15px 10px #FFFFFF;
         }
       }
     }

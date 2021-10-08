@@ -4,6 +4,7 @@
             <img :src="BXLogo" alt="">
         </div>
         <form>
+            <!-- $emit event sending v-model input and reset to App -->
             <input type="text" placeholder="Search" v-model="searchInput">
             <button type="submit" @click.prevent="$emit('search', searchInput), searchInput = '' ">Search</button>
             <button @click.prevent="resetSearch()">Reset</button>
@@ -22,6 +23,7 @@ export default {
         }
     },
     methods : {
+        // when reset button is clicked, it emits '' to App
         resetSearch() {
             this.searchInput = '';
             this.$emit('search', this.searchInput);
@@ -32,6 +34,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/style/common.scss';
+
     .wrapper {
         background: hsla(0, 0%, 0%, 0.589);
         background-blend-mode: multiply;
@@ -51,8 +55,8 @@ export default {
 
             & img {
                 width: 100%;
-                -webkit-filter: drop-shadow(5px 5px 5px #222);
-                filter: drop-shadow(5px 5px 5px #222);
+                -webkit-filter: drop-shadow(5px 5px 2px #222);
+                filter: drop-shadow(5px 5px 2px #222);
             }
         }
 
@@ -61,7 +65,10 @@ export default {
             display: flex;
             justify-content: center;
             
-    
+            input {
+                padding-left: .5em;
+            }
+
             button {
                 margin-left: 1em;
             }

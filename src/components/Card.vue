@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <!-- Card poster is shown, if value is not null -->
+        <!-- If value is not null, card poster is shown -->
         <img v-if="api.poster_path != null" class="poster" :src="`https://image.tmdb.org/t/p/w342/${api.poster_path}`">
 
         <!-- If value is null, placeholder image is shown  -->
@@ -13,15 +13,15 @@
         <ul class="data">
             <li><strong>Title:</strong>{{api.title || api.name}}</li>
 
-            <!-- If title is the same as originaltitle, original title is not shown -->
+            <!-- If title is the same as original title, original title is not shown -->
             <li v-if="api.original_title !== api.title || api.original_name !== api.name"><strong>Original Title: </strong>{{api.original_title || api.original_name}}</li>
 
             <!-- Flag method checks if the language is supported and returns either the correspondant flag or a default one  -->
             <li class="lang"><strong>Original Language:</strong><img class="flag" :src="flag(api.original_language)"></li>
 
             <li class="stars"> <strong>Rating:</strong>
-                <!-- Returns filled in stars -->
-                <div class="fill" v-for="( star , fillIndex ) in starQuantity()" :key="fillIndex">
+                <!-- Returns solid stars -->
+                <div class="solid" v-for="( star , fillIndex ) in starQuantity()" :key="fillIndex">
                     <font-awesome-icon icon="star" />
                 </div>
                 <!-- Returns empty stars -->
@@ -37,17 +37,14 @@
 </template>
 
 <script>
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default {
     name : "Card",
     props : {
         api : Object
     },
-    components : {
-        // FontAwesomeIcon
-    },
     methods : {
+        // If language returned from API is not contained in the missing languages array, the proper flag is shown  
         flag(isoCode) {
             if ( !this.missingLanguages.includes(isoCode) ) {
                 return `https://www.unknown.nu/flags/images/${isoCode}-100`;
@@ -55,6 +52,7 @@ export default {
                 return "https://upload.wikimedia.org/wikipedia/commons/2/2f/Missing_flag.png";
             }
         },
+        // Average 0-10 rating is transformed to base 5 rating and rounded up to next integer  
         starQuantity() {
             return Math.ceil( this.api.vote_average / 2 );
         }
@@ -167,7 +165,7 @@ export default {
             }
 
             .empty,
-            .fill {
+            .solid {
                 color: $gold;
                 display: flex;
             }

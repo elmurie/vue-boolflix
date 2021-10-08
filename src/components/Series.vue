@@ -33,6 +33,21 @@ export default {
             noTVFound : false
         }
     },
+    created(){
+        // Api call for initial display
+        axios
+            .get("https://api.themoviedb.org/3/trending/tv/week",{
+                params:{
+                    api_key: '72cd08f1aa2d4c12d81158ac764c8449'
+                }
+            }
+            )
+            .then(
+                (response)=>{
+                        this.TVSeries = response.data.results;
+                    }
+            )
+    },
     watch : {
         // listen to changes to prop received (user search value) 
         passedInput() {

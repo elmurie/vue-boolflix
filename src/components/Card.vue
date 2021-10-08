@@ -1,12 +1,14 @@
 <template>
-    <div class="card">
-        <!-- If value is not null, card poster is shown -->
-        <img v-if="api.poster_path != null" class="poster" :src="`https://image.tmdb.org/t/p/w342/${api.poster_path}`">
+    <div class="card mx-auto">
+        <div class="card-img">
+            <!-- If value is not null, card poster is shown -->
+            <img v-if="api.poster_path != null" class="poster" :src="`https://image.tmdb.org/t/p/w342/${api.poster_path}`">
 
-        <!-- If value is null, placeholder image is shown  -->
-        <div v-else class="placeholder">
-            <img class="placeholder-img" :src="placeholderImg" alt="">
-            <h3>{{api.title || api.name}}</h3>
+            <!-- If value is null, placeholder image is shown  -->
+            <div v-else class="placeholder">
+                <img class="placeholder-img" :src="placeholderImg" alt="">
+                <h3>{{api.title || api.name}}</h3>
+            </div>
         </div>
 
         <!-- Text on hover -->
@@ -69,12 +71,13 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/style/common.scss';
     .card {
+        max-width: 14rem;
+        height: calc(14rem * 1.5);
         background-color: $bgColor;
-        margin: 1rem .1em;
+        margin: .7rem .1rem;
         position: relative;
         display: flex;
         transition: 1s;
-        
 
         &:hover {
             cursor: pointer;
@@ -107,8 +110,13 @@ export default {
             }
         }
 
+        .card-img {
+            height: 100% ;
+        }
+
         .poster {
             width: 100%;
+            height: 100%;
             object-fit: cover;
             transform: rotateY(0deg);
             transition:  1s ease-out;
@@ -144,17 +152,8 @@ export default {
                     margin-right: .2em;
                 }
                 .flag {
-                    max-width: 2rem;
+                    max-width: 1.5rem;
                     margin-left: .5em;
-                }
-
-                p {
-                    margin-top: 1em;
-                    display: -webkit-box;
-                    -webkit-line-clamp: var(--line-clamp, 8);
-                    -webkit-box-orient: vertical;
-                    word-break: var(--word-break, 'none');
-                    overflow: hidden;
                 }
             }
 

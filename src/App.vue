@@ -55,12 +55,13 @@ export default {
     background-blend-mode: multiply;
 
     main {
-      padding: 1% 5% 5% 5%;
+      padding: 1% 3% 3% 3%;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
 
       .searchCoA {
+        font-size: $titleSectionFont;
         align-self: center;
         margin-top: 10%;
         animation: blinker 3s ease-in-out infinite;

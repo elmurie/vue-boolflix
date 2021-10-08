@@ -50,8 +50,7 @@ export default {
         box-shadow: inset 0px -15px 20px -7px #000000;
 
         .logo {
-            max-width: 10%;
-            min-width: 5%;
+            width: 10%;
 
             & img {
                 width: 100%;

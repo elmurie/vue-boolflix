@@ -1,3 +1,6 @@
+// Import Bootstrap
+@import '~bootstrap/scss/bootstrap-grid.scss';
+
 // Import variables file
 @import './variables.scss';
 
@@ -19,6 +22,12 @@ body {
 
 ul {
     list-style: none;
+}
+
+.row > li {
+    padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
 button {
@@ -59,6 +68,22 @@ input:focus {
     outline: none;
 }
 
+/* Typo */
+
+// Card paragraph wrapping
+
+p {
+    margin-top: 1em;
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-line-clamp: var(--line-clamp, 8);
+    -webkit-box-orient: vertical;
+    word-break: var(--word-break, 'none');
+    overflow: hidden;
+
+}
+
+
 /* Scrollbar */
 
 // Width
@@ -79,5 +104,3 @@ input:focus {
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient($mainColorDark, $mainColor) ;
 }
-
-/* Media queries */

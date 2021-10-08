@@ -1,12 +1,12 @@
 <template>
-    <section class="tv-series">
+    <section class="tv-series container-fluid">
         <!-- displayed only if search returns no results -->
         <h1 v-if="noTVFound == true">NO TV SERIES FOUND</h1>
 
         <!-- displayed only if search returns at least 1 result -->
         <h3 v-if="TVSeries != 0">TV SERIES</h3>
-        <ul>
-            <li v-for="(TV, TVindex) in TVSeries" :key='TVindex'>
+        <ul class="row row-cols-xxl-5 container mx-auto">
+            <li class="col-12 col-sm-6 col-md-4 col-lg-3 col-xxl" v-for="(TV, TVindex) in TVSeries" :key='TVindex'>
                 <!-- passes api props onto Card component -->
                 <Card :api="TV"/>
             </li>
@@ -76,17 +76,6 @@ export default {
 
         h3 {
             font-size: $titleSectionFont;
-        }
-        
-        & > ul {
-            display: flex;
-            justify-content: flex-start;
-            flex-wrap: wrap;
-        }
-        
-        li {
-            width: 20%;
-            display: flex;
         }
     }
 

@@ -32,7 +32,7 @@
                 </div>
             </li>
 
-            <li><p><strong>Cast:</strong>{{this.castmembers.join(', ')}}</p></li>
+            <li><p><strong>Cast:</strong>{{this.castMembers.join(', ')}}</p></li>
             <li><p><strong>Overview:</strong>{{api.overview}}</p></li>
 
         </ul>
@@ -48,7 +48,8 @@ export default {
         api : Object
     },
     mounted() {
-        this.cast()
+        this.movieCast(),
+        this.TVCast()
     },
     methods : {
         // If language returned from API is not contained in the missing languages array, the proper flag is shown  
@@ -63,7 +64,7 @@ export default {
         starQuantity() {
             return Math.ceil( this.api.vote_average / 2 );
         },
-        cast() {
+        movieCast() {
             axios.get(`https://api.themoviedb.org/3/movie/${this.api.id}/credits`, {
                     params : {
                         api_key : '72cd08f1aa2d4c12d81158ac764c8449',
@@ -73,7 +74,21 @@ export default {
                 // array is populated with movie objects, if 0 "NO MOVIE FOUND" message is displayed
                 .then( (response) => {
                     for ( let i = 0; i < 5 && i < response.data.cast.length; i++ ) {
-                        this.castmembers.push( `${response.data.cast[i].name}`)
+                        this.castMembers.push( `${response.data.cast[i].name}`)
+                    }
+                });
+        },
+        TVCast() {
+            axios.get(`https://api.themoviedb.org/3/tv/${this.api.id}/credits`, {
+                    params : {
+                        api_key : '72cd08f1aa2d4c12d81158ac764c8449',
+                        language : 'it-IT'
+                    }
+                })
+                // array is populated with movie objects, if 0 "NO MOVIE FOUND" message is displayed
+                .then( (response) => {
+                    for ( let i = 0; i < 5 && i < response.data.cast.length; i++ ) {
+                        this.castMembers.push( `${response.data.cast[i].name}`)
                     }
                 });
         }
@@ -82,7 +97,7 @@ export default {
         return {
             missingLanguages : ['gu', 'ii', 'ik', 'iu', 'jv', 'kg', 'ki', 'kj', 'ml', 'mr', 'nb', 'nd', 'ng', 'nn', 'nr', 'pi', 'ps', 'sa', 'sw', 'te', 'tl', 'tw'],
             placeholderImg : require('../assets/img/placeholder.png'),
-            castmembers : []
+            castMembers : []
         }
     }
 }

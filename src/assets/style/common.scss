@@ -1,6 +1,9 @@
 // Import Bootstrap
 @import '~bootstrap/scss/bootstrap-grid.scss';
 
+// Import Google Font
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap');
+
 // Import variables file
 @import './variables.scss';
 
@@ -15,7 +18,7 @@
 
 body {
     overflow-y: scroll;
-    font-family: Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: $textColor;
     position: relative;
 }
@@ -69,6 +72,13 @@ input:focus {
 }
 
 /* Typo */
+
+// Section titles font
+
+.movies > h3,
+.tv-series > h3 {
+    font-family: 'Montserrat', sans-serif;
+}
 
 // Card paragraph wrapping
 

@@ -4,6 +4,9 @@
     <!-- listens to v-model input from header.vue   -->
     <Header @search="itemSearched"/>
     <main>
+      <!-- text displayed on initial page load or if search is resetted, hidden when proper input is entered  -->
+      <!-- <h1 class="searchCoA" v-if="updateSearch == ''">SEARCH FOR A MOVIE OR TV SERIES</h1> -->
+      
       <!--prop (v-model input value) passed onto Movies and Series-->
       <Films :passedInput="updateSearch"/>
       <Series :passedInput="updateSearch"/>
@@ -57,6 +60,19 @@ export default {
       flex-direction: column;
       align-items: flex-start;
 
+      // .searchCoA {
+      //   font-size: $titleSectionFont;
+      //   align-self: center;
+      //   margin-top: 10%;
+      //   animation: blinker 3s ease-in-out infinite;
+      // }
+      // @keyframes blinker {
+      //   50% {
+      //     opacity : .25;
+      //     -webkit-text-shadow: 0px 0px 15px 10px #FFFFFF; 
+      //     text-shadow: 0px 0px 15px 10px #FFFFFF;
+      //   }
+      // }
     }
   }
 

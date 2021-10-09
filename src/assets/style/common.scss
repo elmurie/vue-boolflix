@@ -73,7 +73,7 @@ input:focus {
 // Card paragraph wrapping
 
 p {
-    margin-top: 1em;
+    display: inline;
     text-align: justify;
     display: -webkit-box;
     -webkit-line-clamp: var(--line-clamp, 8);

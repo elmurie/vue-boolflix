@@ -119,7 +119,7 @@ export default {
 
 @media screen and ( max-width: 576px ) {
     .movies  {
-    padding-top: 8rem;
+    padding-top: 10rem;
     
 }
 }

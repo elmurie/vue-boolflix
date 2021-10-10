@@ -6,8 +6,10 @@
         <form>
             <!-- $emit event sending v-model input and reset to App -->
             <input type="text" placeholder="Search" v-model="searchInput">
-            <button type="submit" @click.prevent="$emit('search', searchInput), searchInput = '' ">Search</button>
-            <button @click.prevent="resetSearch()">Clear</button>
+            <div class="buttons">
+                <button type="submit" @click.prevent="$emit('search', searchInput), searchInput = '' ">Search</button>
+                <button @click.prevent="resetSearch()">Clear</button>
+            </div>
         </form>
     </header>
 </template>
@@ -73,6 +75,30 @@ export default {
             }
         }
     }
+
+// Mobile media query
+
+    @media screen and ( max-width: 576px ) {
+    .wrapper,
+    form {
+        flex-direction: column;
+    }
+    .wrapper .logo {
+        width: 40%;
+    }
+    .wrapper .buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+    .wrapper form input {
+            width: 200px;
+            height: 30px;
+            margin: 0 0 .5em 0;
+    }
+    .wrapper form button {
+        margin: 0 0 .5em 0;
+    }
+}
 
 
 </style>

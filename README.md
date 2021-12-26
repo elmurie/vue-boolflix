@@ -2,8 +2,8 @@
 ## Info
 This is a Netflix clone that shows Movies and TV Series using TheMovieDB's API.
 Hovering over a card will display the corresponding data.  
-Technologies: **VUE CLI**, **Bootstrap**
-Have a look <a href="https://morieri-boolflix.netlify.app/">here</a>!
+Technologies: **VUE CLI**, **Bootstrap**  
+Have a look for yourself <a href="https://morieri-boolflix.netlify.app/">at this link </a>!
 
 <details>
   <summary>Screenshots</summary>

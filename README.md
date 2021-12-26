@@ -1,7 +1,8 @@
 # vue-boolflix
 ## Info
-This is a Netflix clone that shows Movies and TV Series using TheMovieDB's API.
-Hovering over a card will display the corresponding data.  
+This is a Netflix clone that shows movies and TV Series using TheMovieDB's API.
+Hovering over a card will display the corresponding data. **Intended for Italian speakers only, sorry ** :sweat_smile:
+The website grabs the trending movies and TV series from the API on page load, but you can search for your favourite using the search bar.  
 Technologies: **VUE CLI**, **Bootstrap**  
 Have a look for yourself <a href="https://morieri-boolflix.netlify.app/">at this link </a>!
 

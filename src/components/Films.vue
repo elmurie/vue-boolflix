@@ -103,25 +103,18 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/style/common.scss';
-.movies  {
-    width: 100%;
-    padding-top: 5rem;
-    
-    h1 {
-        text-align: center;
-    }
-
-    h3 {
-        font-size: $titleSectionFont;
-    }
-    
-}
-
-@media screen and ( max-width: 576px ) {
     .movies  {
-    padding-top: 8rem;
-    
-}
-}
+        width: 100%;
+        padding-top: 5rem;
+        
+        h1 {
+            text-align: center;
+        }
+
+        h3 {
+            font-size: $titleSectionFont;
+        }
+        
+    }
 
 </style>
